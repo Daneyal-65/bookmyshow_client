@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 
 // Simulating an authentication check (you can replace this with real logic)
 const isAuthenticated = () => {
-  // Example: Check localStorage or cookie for token
+  // check localStorage
   return localStorage.getItem("authToken") !== null;
 };
 
