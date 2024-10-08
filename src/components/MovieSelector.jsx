@@ -9,7 +9,7 @@ export const MovieSelector = ({ movies, onSelect, selection }) => {
     onSelect(newMovie, "movie");
   };
   useEffect(() => {
-    setSelectedMovie("");
+    if (selection) setSelectedMovie("");
     // console.log(isSelectedMovie);
   }, [selection]);
   return (

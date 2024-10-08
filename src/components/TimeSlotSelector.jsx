@@ -11,8 +11,8 @@ export const TimeSlotSelector = ({ slots, onSelect, selection }) => {
   };
 
   useEffect(() => {
-    setSelectedSlot(""); // Resetting selected slot on selection change
-  }, [selection, isSelectedSlot]); // Add isSelectedSlot as a dependency
+    if (selection) setSelectedSlot("");
+  }, [selection]); // Add isSelectedSlot as a dependency
 
   return (
     <Card>
