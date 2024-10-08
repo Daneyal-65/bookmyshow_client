@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader } from "../ui/Elements";
 import { apiUrl } from "../config";
 
-export const BookingDetails = ({getDetails}) => {
+export const BookingDetails = ({ getDetails }) => {
   const [details, setDetails] = useState(null); // Set initial state to null to handle loading state
 
   // Function to fetch booking details
@@ -12,7 +12,7 @@ export const BookingDetails = ({getDetails}) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          authorization: "Bearer " +`${localStorage.getItem("authToken")}`
+          authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
       });
 
@@ -33,7 +33,7 @@ export const BookingDetails = ({getDetails}) => {
   // Fetch booking details on component mount
   useEffect(() => {
     getBookingDetails();
-  }, [...getDetails]);
+  }, [getDetails]);
 
   // Render the component
   return (

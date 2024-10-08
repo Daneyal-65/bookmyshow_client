@@ -37,7 +37,7 @@ const MovieBookingApp = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          authorization: "Bearer " +`${localStorage.getItem("authToken")}`
+          authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
         body: JSON.stringify(bookingData),
       });
@@ -49,16 +49,16 @@ const MovieBookingApp = () => {
       const data = await response.json();
       console.log("Booking successful:", data);
       setIsbBooked((pre) => ({
-       ...pre,
+        ...pre,
         msg: "Booking Successful...!",
         status: "success",
       }));
       // Handle success response, e.g., show a success message or navigate
     } catch (error) {
       console.error("Booking failed:", error);
-      // Handle error, e.g., show an error 
+      // Handle error, e.g., show an error
       setIsbBooked((pre) => ({
-       ...pre,
+        ...pre,
         msg: "Booking Failed...!",
         status: "error",
       }));
@@ -107,24 +107,25 @@ const MovieBookingApp = () => {
   };
   return (
     <div className="p-4  md:px-20  bg-rose-50 max-h-screen">
-      {isBooked.flag && 
+      {isBooked.flag && (
         <div
-        style={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "300px",
-          backgroundColor: isBooked.status === 'success' ?'green' : 'red',
-          borderRadius: "10px",
-          padding: "20px",
-          zIndex: "1000",
-          color: isBooked.status === 'success' ? 'white' : 'black',
-        }}
-        className="bg-green-600 p-4 rounded-md shadow-md">
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "300px",
+            backgroundColor: isBooked.status === "success" ? "green" : "red",
+            borderRadius: "10px",
+            padding: "20px",
+            zIndex: "1000",
+            color: isBooked.status === "success" ? "white" : "black",
+          }}
+          className="bg-green-600 p-4 rounded-md shadow-md"
+        >
           <p className="text-center text-lg">{isBooked.msg}</p>
-        </div>  
-      }
+        </div>
+      )}
       <h1 className="text-2xl font-bold">Book that show!!</h1>
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex flex-col gap-4 p-4">
@@ -148,9 +149,7 @@ const MovieBookingApp = () => {
           </Button>
         </div>
         <div>
-          <BookingDetails
-            getDetails={[selectedMovie,selectedSeats,selectedSlot]}
-          />
+          <BookingDetails getDetails={isBooked.flag} />
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { authUrl } from "./config";
 import { login, signup } from "./apiCall";
 
 const LoginSignup = () => {
@@ -50,9 +49,9 @@ const LoginSignup = () => {
     if (isValid) {
       if (isLogin) {
         const data = await login(formData);
-        localStorage.setItem('authToken', data.token);
-        if(data.token){
-          window.location.href = '/book-movie';
+        localStorage.setItem("authToken", data.token);
+        if (data.token) {
+          window.location.href = "/book-movie";
         }
       } else {
         const data = await signup(formData);
