@@ -3,15 +3,17 @@ import { Button, Card, CardContent, CardHeader } from "../ui/Elements";
 
 export const TimeSlotSelector = ({ slots, onSelect, selection }) => {
   const [isSelectedSlot, setSelectedSlot] = useState("");
+
   const selectedSlot = (index) => {
     const newSlot = slots[index];
     setSelectedSlot(newSlot);
     onSelect(newSlot, "slot");
   };
+
   useEffect(() => {
-    setSelectedSlot("");
-    console.log(isSelectedSlot);
-  }, [selection]);
+    setSelectedSlot(""); // Resetting selected slot on selection change
+  }, [selection, isSelectedSlot]); // Add isSelectedSlot as a dependency
+
   return (
     <Card>
       <CardHeader>Select a Time slot</CardHeader>
