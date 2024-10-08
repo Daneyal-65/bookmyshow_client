@@ -10,7 +10,7 @@ export const MovieSelector = ({ movies, onSelect, selection }) => {
   };
   useEffect(() => {
     setSelectedMovie("");
-    console.log(isSelectedMovie);
+    // console.log(isSelectedMovie);
   }, [selection]);
   return (
     <Card>

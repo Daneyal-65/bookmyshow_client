@@ -132,12 +132,12 @@ const MovieBookingApp = () => {
           <MovieSelector
             movies={movies}
             onSelect={onSelect}
-            selection={isBooked.flag}
+            selection={selectedMovie}
           />
           <TimeSlotSelector
             slots={slots}
             onSelect={onSelect}
-            selection={isBooked.flag}
+            selection={selectedSlot}
           />
           <SeatSelector
             seats={seats}
