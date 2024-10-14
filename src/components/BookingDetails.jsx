@@ -26,7 +26,7 @@ export const BookingDetails = ({ getDetails }) => {
       console.log(data);
       setDetails(data); // Store the fetched details in state
     } catch (error) {
-      console.error("Error fetching booking details:", error);
+      console.log("Error fetching booking details:", error);
     }
   };
 

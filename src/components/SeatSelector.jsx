@@ -15,6 +15,7 @@ export const SeatSelector = ({ seats, onSelect, selection }) => {
             <span className="font-medium text-gray-700">{`Seat ${seat}`}</span>
             <Input
               type="number"
+              data-testid={seat}
               min="0"
               max="20"
               className={`w-20 h-10 px-2 text-center rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all 

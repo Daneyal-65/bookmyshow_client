@@ -49,12 +49,16 @@ const LoginSignup = () => {
     if (isValid) {
       if (isLogin) {
         const data = await login(formData);
-        localStorage.setItem("authToken", data.token);
         if (data.token) {
+          localStorage.setItem("authToken", data.token);
           window.location.href = "/book-movie";
         }
       } else {
         const data = await signup(formData);
+        if (data.token) {
+          localStorage.setItem("authToken", data.token);
+          window.location.href = "/book-movie";
+        }
         console.log(data);
       }
 
