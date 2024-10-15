@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { login, signup } from "./apiCall";
+import Loading from "../components/Loading";
 
 const LoginSignup = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
+  const [isLoading, setIsLoading] = useState(false); // Toggle between login and signup
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -45,23 +47,24 @@ const LoginSignup = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const isValid = validate();
     if (isValid) {
       if (isLogin) {
         const data = await login(formData);
-        if (data.token) {
+        if (data?.token) {
           localStorage.setItem("authToken", data.token);
           window.location.href = "/book-movie";
         }
       } else {
         const data = await signup(formData);
-        if (data.token) {
+        if (data?.token) {
           localStorage.setItem("authToken", data.token);
           window.location.href = "/book-movie";
         }
         console.log(data);
       }
-
+      setIsLoading(false);
       setFormData({
         username: "",
         password: "",
@@ -142,6 +145,8 @@ const LoginSignup = () => {
           >
             {isLogin ? "Sign Up" : "Login"}
           </button>
+          <br />
+          {<Loading loading={isLoading} />}
         </p>
       </div>
     </div>

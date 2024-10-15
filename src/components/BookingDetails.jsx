@@ -29,7 +29,6 @@ export const BookingDetails = ({ getDetails }) => {
       console.log("Error fetching booking details:", error);
     }
   };
-
   // Fetch booking details on component mount
   useEffect(() => {
     getBookingDetails();
@@ -44,17 +43,17 @@ export const BookingDetails = ({ getDetails }) => {
           <>
             <p>Seats:</p>
             {/* Loop through the seats object and display each seat and its count */}
-            {Object.entries(details.seats).map(([seat, count]) => (
-              <p key={seat}>{`${seat}: ${count}`}</p>
-            ))}
+            {details.seats &&
+              Object.entries(details?.seats).map(([seat, count]) => (
+                <p key={seat}>{`${seat}: ${count}`}</p>
+              ))}
             {/* Display the slot and movie details */}
             <p>{`Slot: ${details.slot || "N/A"}`}</p>
             <p>{`Movie: ${details.movie || "N/A"}`}</p>
+            <p>{`  ${details.message ? details.message + "...." : " "}`}</p>
           </>
         ) : (
-          <p className="text-xl font-black">
-            there is no any previous booking...
-          </p>
+          ""
         )}
       </CardContent>
     </Card>
