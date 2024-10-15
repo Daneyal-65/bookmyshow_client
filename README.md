@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# **BookMyShow Movie Booking Website**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Project Overview**
 
-## Available Scripts
+The **BookMyShow Movie Booking Website** is a capstone project integrating key concepts of Full Stack Web Development. This project demonstrates proficiency in both front-end and back-end development by creating a movie booking system similar to the BookMyShow platform. The website allows users to book movie tickets online, and the project follows a structured, hands-on approach to ensure holistic learning.
 
-In the project directory, you can run:
+## **Key Objectives**
 
-### `npm start`
+1. **Team Collaboration**  
+   Effective collaboration allows team members to pool different skills and knowledge to solve project challenges.
+   
+2. **Hands-on Work Experience**  
+   By building a real-world project, learners will gain practical experience crucial for professional development.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Holistic Understanding**  
+   This project ensures mastery of Full Stack Web Development concepts through a comprehensive learning process.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Project Features**
 
-### `npm test`
+1. **Backend Server**  
+   The backend is built using **Express.js** and listens on port `8080`. It includes two endpoints for handling movie bookings:
+   - **POST** `/api/booking`: Allows users to make a movie booking.
+   - **GET** `/api/booking`: Retrieves the last movie booking details.
+   
+2. **Frontend Server**  
+   The frontend is built using **React.js** and runs on port `3000`. It allows users to view available movies, choose a time slot, and book tickets by selecting seat types.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Database Server**  
+   The database stores booking details and connects via **mongoDB Atlas**. It uses a schema to ensure proper data storage.
 
-### `npm run build`
+## **Endpoints**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **POST** `/api/booking`
+   - Request Body: 
+     ```json
+     {
+       "movie": "Movie Name",
+       "seats": { "A1": 2, "A2": 3, "D2": 1 },
+       "slot": "10:00 AM"
+     }
+     ```
+   - Response: Status `200` on successful booking.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **GET** `/api/booking`
+   - Response: Retrieves the last booking with movie name, seat types, and time slot:
+     ```json
+     {
+       "movie": "Last Movie Name",
+       "seats": { "A1": 2, "A2": 3, "D2": 1 },
+       "slot": "10:00 AM"
+     }
+     ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **Frontend Requirements**
 
-### `npm run eject`
+1. **Movies, Slots, and Seats**  
+   The client displays a list of movies, slots, and seat types, allowing users to make their selection. After submitting the booking, previous booking details are displayed.
+   
+2. **Form Handling**  
+   Input fields are provided for seat types, and selection is persisted using `localStorage` to prevent loss of data on page reload.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Submit Button**  
+   A submit button initiates the booking process. On successful booking, the details are cleared, and the last booking is displayed without making an extra GET request.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## **Technology Stack**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Frontend:** React.js
+- **Backend:** Express.js
+- **Database:** mongodb Atlas
+- **LocalStorage:** Used for temporary storage of booking selections.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## **Setup Instructions**
+ **clone the repo:**
+ - copy this:
+     ```bash
+     git clone https://github.com/Daneyal-65/book_my_show_server.git
+     ```  
+1. **Backend:**
+   - Install the necessary modules:  
+     ```bash
+     npm install
+     ```  
+     in the backend folder.
+   - Run the backend server:  
+     ```bash
+     npm start
+     ```
 
-## Learn More
+2. **Frontend:**
+    **clone the repo:**
+ - copy this:
+     ```bash
+     git clone https://github.com/Daneyal-65/bookmyshow_client.git
+     ``` 
+   - Install the necessary modules:  
+     ```bash
+     npm install
+     ```  
+     in the frontend folder.
+   - Run the frontend server:  
+     ```bash
+     npm start
+     ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. **Database:**
+   - Use the `connection.js` file to connect to the database.
+   - Follow the `Schema.js` file for data structure.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **UI Design**
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The frontend interface allows users to select movies, slots, and seats, and submit their booking with a user-friendly UI.
